@@ -26,7 +26,6 @@
     "dotenv": "^9.0.2",
     "graphql-request": "^3.4.0",
     "node-fetch": "^2.6.1",
-    "puppeteer": "^9.1.1",
     "twitter": "^1.7.1"
   }
 }
