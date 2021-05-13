@@ -26,6 +26,7 @@
     "dotenv": "^9.0.2",
     "graphql-request": "^3.4.0",
     "node-fetch": "^2.6.1",
+    "rimraf": "^3.0.2",
     "twitter": "^1.7.1"
   }
 }
