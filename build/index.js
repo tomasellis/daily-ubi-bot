@@ -33,6 +33,7 @@ const makeUBITweet = (ubiData) => __awaiter(void 0, void 0, void 0, function* ()
 const logEm = () => __awaiter(void 0, void 0, void 0, function* () {
     //makeUBITweet(await getMyTokenPrice(tokenAPI_URL, contractAddress))
     console.log('UBI Price now:', yield fetchInfoFunctions_1.getMyTokenPrice(config_1.tokenAPI_URL, config_1.contractAddress));
+    console.log('All of em:', yield fetchInfoFunctions_1.countEmAll(0, 1000));
     console.log('All of em in vouching phase:', yield fetchInfoFunctions_1.countEmFiltered(0, 1000, '{status: "Vouching"}'));
     console.log('All of em waiting to register:', yield fetchInfoFunctions_1.countEmFiltered(0, 1000, '{status: "PendingRegistration"}'));
     console.log('All of em registered:', yield fetchInfoFunctions_1.countEmFiltered(0, 1000, '{registered: true}'));

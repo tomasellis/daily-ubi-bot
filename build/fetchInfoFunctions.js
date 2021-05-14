@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkIfSantiParoLaQueue = exports.countEmFiltered = exports.countEmAll = exports.getMyTokenPrice = void 0;
-const graphql_request_1 = require("graphql-request");
 const axios_1 = __importDefault(require("axios"));
 const config_1 = require("./config");
 const getMyTokenPrice = (URL, address) => __awaiter(void 0, void 0, void 0, function* () {
@@ -27,73 +26,88 @@ const getMyTokenPrice = (URL, address) => __awaiter(void 0, void 0, void 0, func
 });
 exports.getMyTokenPrice = getMyTokenPrice;
 const countEmAll = (skip, limit) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = `
-        {
-            submissions(
-                first: ${limit}
-                skip: ${skip}
-                orderBy: creationTime
-                orderDirection: desc
-            ) {
-                id
-            }
+    const res = yield axios_1.default({
+        url: config_1.pohAPI_URL,
+        method: 'post',
+        data: {
+            query: `
+            query {
+                submissions(
+                    first: ${limit}
+                    skip: ${skip}
+                    orderBy: creationTime
+                    orderDirection: desc
+                ) {
+                    id
+                }
+              }
+            `
         }
-    `;
-    const response = yield graphql_request_1.request(config_1.pohAPI_URL, query);
-    if (response.submissions.length >= limit) {
-        return response.submissions.length + (yield countEmAll(skip + limit, limit));
+    });
+    if (res.data.data.submissions.length >= limit) {
+        return res.data.data.submissions.length + (yield countEmAll(skip + limit, limit));
     }
     else {
-        return response.submissions.length;
+        return res.data.data.submissions.length;
     }
 });
 exports.countEmAll = countEmAll;
 const countEmFiltered = (skip, limit, filter) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = `
-        {
-            submissions(
-                first: ${limit}
-                skip: ${skip}
-                orderBy: creationTime
-                orderDirection: desc
-                where: ${filter}
-            ) {
-                id
-            }
+    const response = yield axios_1.default({
+        url: config_1.pohAPI_URL,
+        method: 'post',
+        data: {
+            query: `
+            query {
+                submissions(
+                    first: ${limit}
+                    skip: ${skip}
+                    orderBy: creationTime
+                    orderDirection: desc
+                    where: ${filter}
+                ) {
+                    id
+                }
+              }
+            `
         }
-    `;
-    const response = yield graphql_request_1.request(config_1.pohAPI_URL, query);
-    if (response.submissions.length >= limit) {
-        return response.submissions.length + (yield countEmFiltered(skip + limit, limit, filter));
+    });
+    if (response.data.data.submissions.length >= limit) {
+        return response.data.data.submissions.length + (yield countEmFiltered(skip + limit, limit, filter));
     }
     else {
-        return response.submissions.length;
+        return response.data.data.submissions.length;
     }
 });
 exports.countEmFiltered = countEmFiltered;
 const checkIfSantiParoLaQueue = (skip, limit) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = `
-        {
-            submission(id:"0x2a52309edf998799c4a8b89324ccad91848c8676"){
-            disputed
-            vouchees(where:{disputed: true}) {
-                id
-                status
-                name
-            } 
-            }
+    const response = yield axios_1.default({
+        url: config_1.pohAPI_URL,
+        method: 'post',
+        data: {
+            query: `
+            query {
+                submission(id:"0x2a52309edf998799c4a8b89324ccad91848c8676"){
+                    disputed
+                    vouchees(where:{disputed: true}) {
+                        id
+                        status
+                        name
+                    } 
+                    }
+              }
+            `
         }
-    `;
-    const response = yield graphql_request_1.request(config_1.pohAPI_URL, query);
-    if (response.submission.disputed === true) {
+    });
+    if (response.data.data.submission.disputed === true) {
         return 'Santi metio la pata';
     }
     else {
-        if (response.submission.vouchees.length > 0) {
-            return `${response.submission.vouchees[0].name} metió la pata`;
+        if (response.data.data.submission.vouchees.length > 0) {
+            return `${response.data.data.submission.vouchees[0].name} metió la pata`;
         }
     }
-    if (response.submission.vouchees.length >= limit) {
+    if (response.data.data.submission.vouchees.length >= limit) {
         return yield checkIfSantiParoLaQueue(skip + limit, limit);
     }
     else {
