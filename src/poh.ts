@@ -1,16 +1,7 @@
-import axios from 'axios'
 import {pohAPI_URL} from './config'
+import axios from 'axios'
 
-const getMyTokenPrice = async (URL: string, address: string) => {
-    try {
-        const res = await axios.get(URL)
-        return res.data[address]
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-const countEmAll = async (skip: number, limit: number): Promise<number> => {
+export const countEmAll = async (skip: number, limit: number): Promise<number> => {
     
     const res = await axios({
         url: pohAPI_URL,
@@ -38,7 +29,7 @@ const countEmAll = async (skip: number, limit: number): Promise<number> => {
     }
 }
 
-const countEmFiltered = async (skip: number, limit: number, filter: any): Promise<number> => {
+export const countEmFiltered = async (skip: number, limit: number, filter: any): Promise<number> => {
     const response = await axios({
         url: pohAPI_URL,
         method: 'post',
@@ -66,7 +57,7 @@ const countEmFiltered = async (skip: number, limit: number, filter: any): Promis
     }
 }
 
-const checkIfSantiParoLaQueue = async (skip: number, limit: number): Promise<string> => {
+export const checkIfSantiParoLaQueue = async (skip: number, limit: number): Promise<string> => {
     const response = await axios({
         url: pohAPI_URL,
         method: 'post',
@@ -99,11 +90,4 @@ const checkIfSantiParoLaQueue = async (skip: number, limit: number): Promise<str
     } else {
         return 'Por hoy todo bien'
     }
-}
-
-export {
-    getMyTokenPrice,
-    countEmAll,
-    countEmFiltered,
-    checkIfSantiParoLaQueue
 }
