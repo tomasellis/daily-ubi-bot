@@ -17,7 +17,7 @@ const botConfig: TwitterConfig = {
 }
 
 const currencies = ['usd']
-                         0xDd1Ad9A21Ce722C151A836373baBe42c868cE9a4
+
 const contractAddress = '0xdd1ad9a21ce722c151a836373babe42c868ce9a4'
 
 const joinCurrencies = currencies.length > 1 ? currencies.join('%2C') : currencies[0]

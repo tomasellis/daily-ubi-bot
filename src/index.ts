@@ -5,22 +5,17 @@ import { countEmAll, countEmFiltered, getMyTokenPrice, checkIfSantiParoLaQueue }
 const twitterBot = new Twitter(botConfig)
 
 const makeUBITweet = async (ubiData: any) => {
-    let dayChange = ubiData.usd_24h_change.toFixed(2)
-    if (dayChange>=0){
-        return {
-            status: `Marado! Marado! $ubi sigue subiendo, qué estás esperando?
-            En un día cambio un ${dayChange}% y en este momento vale ${ubiData.usd}USD
-            Source: coingecko.com`
-        }
-    }
-    return {status: `Que no decaiga! El universo se balanceo y $ubi terminó cambiando un
-    ${dayChange}%, pero sigue valiendo ${ubiData.usd}USD! Apurate y conseguí los tuyos :)
-    Source: coingecko.com
-    `}
+
+    let dayChange = ubiData.usd_24h_change.toFixed(1)
+
+    return {status: `$ubi is ${ubiData.usd.toFixed(2)} USD right now. (${dayChange}%)
+
+    ${await countEmFiltered(0,1000,'{registered: true}')} humans are receiving UBI 💧`}
 }
 
 const logEm = async () => {
     //makeUBITweet(await getMyTokenPrice(tokenAPI_URL, contractAddress))
+    console.log('Tweet', await makeUBITweet(await getMyTokenPrice(tokenAPI_URL, contractAddress)))
     console.log('UBI Price now:', await getMyTokenPrice(tokenAPI_URL, contractAddress))
     console.log('All of em:', await countEmAll(0,1000))
     console.log('All of em in vouching phase:', await countEmFiltered(0,1000, '{status: "Vouching"}'))
