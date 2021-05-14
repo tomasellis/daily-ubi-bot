@@ -1,4 +1,3 @@
-import {request} from 'graphql-request'
 import axios from 'axios'
 import {pohAPI_URL} from './config'
 
