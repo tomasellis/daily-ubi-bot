@@ -2,12 +2,10 @@
   "name": "ubi-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "ts-node src/index.ts",
-    "build": "rimraf ./build && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +21,6 @@
     "axios": "^0.21.1",
     "date-fns": "^2.21.3",
     "dotenv": "^9.0.2",
-    "rimraf": "^3.0.2",
     "twitter": "^1.7.1"
   }
 }
