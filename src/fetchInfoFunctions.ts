@@ -1,4 +1,4 @@
-import { request, gql} from 'graphql-request'
+import { request} from 'graphql-request'
 import axios from 'axios'
 import {pohAPI_URL} from './config'
 
@@ -13,7 +13,7 @@ const getMyTokenPrice = async (URL: string, address: string) => {
 
 const countEmAll = async (skip: number, limit: number): Promise<number> => {
     
-    const query = gql`
+    const query =`
         {
             submissions(
                 first: ${limit}
@@ -37,7 +37,7 @@ const countEmAll = async (skip: number, limit: number): Promise<number> => {
 
 const countEmFiltered = async (skip: number, limit: number, filter: any): Promise<number> => {
     
-    const query = gql`
+    const query =`
         {
             submissions(
                 first: ${limit}
