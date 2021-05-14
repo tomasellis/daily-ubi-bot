@@ -1,1 +1,1 @@
-web: npm run dryrun
+worker: npm run dryrun
