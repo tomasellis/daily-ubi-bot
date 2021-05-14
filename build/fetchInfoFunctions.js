@@ -27,7 +27,7 @@ const getMyTokenPrice = (URL, address) => __awaiter(void 0, void 0, void 0, func
 });
 exports.getMyTokenPrice = getMyTokenPrice;
 const countEmAll = (skip, limit) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = graphql_request_1.gql `
+    const query = `
         {
             submissions(
                 first: ${limit}
@@ -49,7 +49,7 @@ const countEmAll = (skip, limit) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.countEmAll = countEmAll;
 const countEmFiltered = (skip, limit, filter) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = graphql_request_1.gql `
+    const query = `
         {
             submissions(
                 first: ${limit}
@@ -72,7 +72,7 @@ const countEmFiltered = (skip, limit, filter) => __awaiter(void 0, void 0, void 
 });
 exports.countEmFiltered = countEmFiltered;
 const checkIfSantiParoLaQueue = (skip, limit) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = graphql_request_1.gql `
+    const query = `
         {
             submission(id:"0x2a52309edf998799c4a8b89324ccad91848c8676"){
             disputed

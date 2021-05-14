@@ -62,7 +62,7 @@ const countEmFiltered = async (skip: number, limit: number, filter: any): Promis
 
 const checkIfSantiParoLaQueue = async (skip: number, limit: number): Promise<string> => {
     
-    const query = gql`
+    const query = `
         {
             submission(id:"0x2a52309edf998799c4a8b89324ccad91848c8676"){
             disputed
