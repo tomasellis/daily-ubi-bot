@@ -8,9 +8,7 @@ export type TweetData = {
 }
 
 export const makeStatus = (data: TweetData) =>
-  `$ubi is ${data.ubiUSD.toFixed(2)} USD right now. (${data.ubiChange.toFixed(
-    1
-  )}%)
+  `$ubi is ${data.ubiUSD.toFixed(2)} USD right now. (${data.ubiChange >= 0 ? '+'+data.ubiChange.toFixed(1) : data.ubiChange.toFixed(1)}%)
 
 ${data.amountOfRegistered} humans are receiving UBI 💧
 `

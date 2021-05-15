@@ -15,7 +15,6 @@ const main = async () => {
   }
 
   const status = makeStatus(tweetData)
-
   console.log(status)
 }
 
