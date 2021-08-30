@@ -2,6 +2,8 @@
 
 A Twitter Bot that displays $ubi token info daily. https://twitter.com/daily_ubi_bot
 
+<img src="https://user-images.githubusercontent.com/62409308/131289413-5b01d5e2-2b02-4620-9bb9-a6071884c919.png" width="500" height="500">
+
 Feel free to open an issue with any suggestions.
 
 I'll be writing a blog post sharing what I've learned building this bot soon.
