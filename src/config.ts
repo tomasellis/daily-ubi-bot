@@ -21,5 +21,4 @@ export const joinCurrencies =
 
 export const tokenAPI_URL = `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${contractAddress}&vs_currencies=${joinCurrencies}&include_24hr_change=true`
 
-export const pohAPI_URL =
-  "https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet"
+export const pohAPI_URL = `https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet`
