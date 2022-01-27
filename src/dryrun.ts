@@ -20,7 +20,7 @@ const main = async () => {
     const status = makeStatus(tweetData)
     console.log(status)
     // Send ok mail
-    wagmiMail()
+    wagmiMail(status)
   } catch (err) {
     // Send not ok mail
     ngmiMail(err as string)
