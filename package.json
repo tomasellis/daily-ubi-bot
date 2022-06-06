@@ -5,7 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "job": "ts-node src/job.ts",
-    "dryrun": "ts-node src/dryrun.ts"
+    "dryrun": "ts-node src/dryrun.ts",
+    "build": "tsc",
+    "prodJob": "node ./build/job.js"
   },
   "keywords": [],
   "author": "",
