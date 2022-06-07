@@ -7,7 +7,8 @@
     "job": "ts-node src/job.ts",
     "dryrun": "ts-node src/dryrun.ts",
     "build": "tsc",
-    "prodJob": "node ./build/job.js"
+    "prodJob": "node ./build/job.js",
+    "prodDryrun": "node ./build/dryrun.js"
   },
   "keywords": [],
   "author": "",
