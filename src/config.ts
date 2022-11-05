@@ -1,8 +1,18 @@
+require("dotenv").config()
+
 export type TwitterConfig = {
   consumer_key: string
   consumer_secret: string
   access_token_key: string
   access_token_secret: string
+}
+
+export type TheGraphConfig = {
+  api_key: string
+}
+
+export const theGraphConfig: TheGraphConfig = {
+  api_key: process.env.THEGRAPH_API_KEY as string,
 }
 
 export const twitterConfig: TwitterConfig = {
@@ -21,4 +31,4 @@ export const joinCurrencies =
 
 export const tokenAPI_URL = `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${contractAddress}&vs_currencies=${joinCurrencies}&include_24hr_change=true`
 
-export const pohAPI_URL = `https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet`
+export const pohAPI_URL = `https://gateway.thegraph.com/api/${theGraphConfig.api_key}/subgraphs/id/CvzNejNZR2UTQ66wL7miGgfWh9dmiwgTtTfgQCBvMQRE`

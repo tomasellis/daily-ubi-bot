@@ -1,4 +1,4 @@
-import { config } from "dotenv"
+import * as dotenv from "dotenv"
 import { contractAddress, tokenAPI_URL } from "./config"
 import { getUbiPrice } from "./ubi"
 import { howManyHumansRegistered } from "./poh"
@@ -28,6 +28,6 @@ const main = async () => {
   }
 }
 
-config()
+dotenv.config()
 
 main()

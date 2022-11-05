@@ -15,7 +15,11 @@ export const howManyHumansRegistered = async (): Promise<number> => {
       }`,
     },
   })
-  return Number(res.data.data.counters[0].registered) + Number(res.data.data.counters[0].expired)
+
+  return (
+    Number(res.data.data.counters[0].registered) +
+    Number(res.data.data.counters[0].expired)
+  )
 }
 
 // export const countEmAll = async (
